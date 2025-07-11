@@ -1,0 +1,6 @@
+name: 'i5k Admin Fixes'
+type: module
+description: 'Injects admin CSS fixes on Tripal edit pages'
+core_version_requirement: ^10
+package: Custom
+version: 1.0

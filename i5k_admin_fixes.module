@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_page_attachments().
+ */
+function i5k_admin_fixes_page_attachments(array &$attachments) {
+  $path_service = \Drupal::service('path.current');
+  $path = $path_service->getPath();
+  $alias = \Drupal::service('path_alias.manager')->getAliasByPath($path);
+
+  // Apply only on Tripal edit pages — both canonical and alias
+  $matches_real_path = preg_match('#^/bio_data/\d+/edit#i', $path);
+  $matches_alias_path = preg_match(
+    '#^/(bio_data|genome_assembly|Genomeannotation|Genefunctionalannotation|organism|analysis|publication)/\d+/edit#i',
+    $alias
+  );
+
+  if ($matches_real_path || $matches_alias_path) {
+    $attachments['#attached']['library'][] = 'i5k_admin_fixes/admin_form_fix';
+  }
+}

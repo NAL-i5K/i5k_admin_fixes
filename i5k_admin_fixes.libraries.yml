@@ -1,0 +1,8 @@
+admin_form_fix:
+  version: 1.x
+  css:
+    theme:
+      css/fixes/i5k_admin_fix.css: {}
+
+    
+
