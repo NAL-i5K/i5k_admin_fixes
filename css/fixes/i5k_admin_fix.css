@@ -1,0 +1,134 @@
+@charset "UTF-8";
+/* i5k_admin_fix.scss */
+.toolbar-tray-vertical[hidden],
+.toolbar-tray.is-collapsed {
+  display: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+body{
+  color:red !important
+}
+
+body.admin-toolbar .toolbar-tray.toolbar-tray-vertical.is-collapsed,
+body.admin-toolbar .toolbar-tray-vertical[hidden] {
+  display: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Ensure the admin sidebar (right column) is narrower and doesn't block content */
+body.admin-toolbar .layout-region.layout-region--secondary {
+  width: 200px !important;
+  max-width: 200px !important;
+  flex: 0 0 200px !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure main column grows to fill remaining space */
+body.admin-toolbar .layout-region.layout-region--main {
+  flex-grow: 1 !important;
+}
+
+/* Make draggable rows clickable above z-index layering */
+body.admin-toolbar tr.draggable td,
+tr.draggable td {
+  position: relative;
+  z-index: 10 !important;
+}
+
+/* Shrink and prevent table overflow into sidebar */
+body.admin-toolbar .field-multiple-table {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  display: block;
+}
+
+/* Ensure inner table doesn’t stretch too wide */
+body.admin-toolbar .field-multiple-table table {
+  table-layout: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+@charset "UTF-8";
+/* i5k_admin_fix.scss */
+.toolbar-tray-vertical[hidden],
+.toolbar-tray.is-collapsed {
+  display: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+body.admin-toolbar .toolbar-tray.toolbar-tray-vertical.is-collapsed,
+body.admin-toolbar .toolbar-tray-vertical[hidden] {
+  display: none !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Ensure the admin sidebar (right column) is narrower and doesn't block content */
+body.admin-toolbar .layout-region.layout-region--secondary {
+  width: 200px !important;
+  max-width: 200px !important;
+  flex: 0 0 200px !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure main column grows to fill remaining space */
+body.admin-toolbar .layout-region.layout-region--main {
+  flex-grow: 1 !important;
+}
+
+/* Make draggable rows clickable above z-index layering */
+body.admin-toolbar tr.draggable td,
+tr.draggable td {
+  position: relative;
+  z-index: 10 !important;
+}
+
+/* Shrink and prevent table overflow into sidebar */
+body.admin-toolbar .field-multiple-table {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  display: block;
+}
+
+/* Ensure inner table doesn’t stretch too wide */
+body.admin-toolbar .field-multiple-table table {
+  table-layout: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+/* Prevent Database Reference Annotations table from pushing into sidebar */
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Make inner table width auto-responsive */
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table table {
+  table-layout: auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure input fields inside the problematic table are wrapped properly */
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table input,
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table select {
+  max-width: 100%;
+  width: auto;
+  min-width: 0;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+
+
