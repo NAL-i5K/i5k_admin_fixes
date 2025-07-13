@@ -125,5 +125,13 @@ body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-ta
   max-width: 400px;
   box-sizing: border-box;
 }
+/* More bullet-proof: constrain all multi-value tables */
+body.admin-toolbar .field-multiple-table table {
+  table-layout: fixed !important;
+}
+
+body.admin-toolbar .field-multiple-table td {
+  word-break: break-word !important;
+}
 
 
