@@ -111,18 +111,25 @@ body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-ta
   max-width: 100%;
 }
 
-/* Make inner table width auto-responsive */
+/* Force table layout to fixed to constrain width */
 body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table table {
-  table-layout: auto;
-  width: 100%;
-  max-width: 100%;
+  table-layout: fixed !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border-collapse: collapse;
 }
 
-/* Ensure input fields inside the problematic table are wrapped properly */
+/* Wrap text content in table cells */
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table td {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Ensure input and select fields wrap inside their cells */
 body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table input,
 body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table select {
-  width: 100%;
-  max-width: 400px;
+  width: 100% !important;
+  max-width: 400px !important;
   box-sizing: border-box;
 }
 /* More bullet-proof: constrain all multi-value tables */
