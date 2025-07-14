@@ -1,13 +1,9 @@
 @charset "UTF-8";
 /* i5k_admin_fix.scss */
-.toolbar-tray-vertical[hidden],
-.toolbar-tray.is-collapsed {
-  display: none !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-}
 
+/* Hide collapsed admin tray that might interfere */
+.toolbar-tray-vertical[hidden],
+.toolbar-tray.is-collapsed,
 body.admin-toolbar .toolbar-tray.toolbar-tray-vertical.is-collapsed,
 body.admin-toolbar .toolbar-tray-vertical[hidden] {
   display: none !important;
@@ -17,7 +13,7 @@ body.admin-toolbar .toolbar-tray-vertical[hidden] {
   z-index: 1 !important;
 }
 
-/* Ensure the admin sidebar (right column) is narrower and doesn't block content */
+/* Shrink admin sidebar so it doesn’t block fields */
 body.admin-toolbar .layout-region.layout-region--secondary {
   width: 200px !important;
   max-width: 200px !important;
@@ -26,92 +22,47 @@ body.admin-toolbar .layout-region.layout-region--secondary {
   pointer-events: none !important;
 }
 
-/* Ensure main column grows to fill remaining space */
+/* Let main column take the full rest of the page */
 body.admin-toolbar .layout-region.layout-region--main {
   flex-grow: 1 !important;
 }
 
-/* Make draggable rows clickable above z-index layering */
+/* Ensure draggable rows like “Remove” button stay clickable */
 body.admin-toolbar tr.draggable td,
 tr.draggable td {
   position: relative;
   z-index: 10 !important;
 }
 
-/* Shrink and prevent table overflow into sidebar */
-body.admin-toolbar .field-multiple-table {
+/* Ensure all field-multiple tables behave responsively */
+body.admin-toolbar .field-multiple-table,
+.field-multiple-table {
+  display: block;
   max-width: 100% !important;
   overflow-x: auto !important;
-  display: block;
 }
 
-/* Ensure inner table doesn’t stretch too wide */
-body.admin-toolbar .field-multiple-table table {
-  table-layout: auto !important;
+body.admin-toolbar .field-multiple-table table,
+.field-multiple-table table {
+  table-layout: fixed !important;
   width: 100% !important;
   max-width: 100% !important;
-}
-@charset "UTF-8";
-/* i5k_admin_fix.scss */
-.toolbar-tray-vertical[hidden],
-.toolbar-tray.is-collapsed {
-  display: none !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
+  border-collapse: collapse;
 }
 
-body.admin-toolbar .toolbar-tray.toolbar-tray-vertical.is-collapsed,
-body.admin-toolbar .toolbar-tray-vertical[hidden] {
-  display: none !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
+body.admin-toolbar .field-multiple-table td,
+.field-multiple-table td {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
-/* Ensure the admin sidebar (right column) is narrower and doesn't block content */
-body.admin-toolbar .layout-region.layout-region--secondary {
-  width: 200px !important;
-  max-width: 200px !important;
-  flex: 0 0 200px !important;
-  z-index: 0 !important;
-  pointer-events: none !important;
-}
-
-/* Ensure main column grows to fill remaining space */
-body.admin-toolbar .layout-region.layout-region--main {
-  flex-grow: 1 !important;
-}
-
-/* Make draggable rows clickable above z-index layering */
-body.admin-toolbar tr.draggable td,
-tr.draggable td {
-  position: relative;
-  z-index: 10 !important;
-}
-
-/* Shrink and prevent table overflow into sidebar */
-body.admin-toolbar .field-multiple-table {
-  max-width: 100% !important;
-  overflow-x: auto !important;
-  display: block;
-}
-
-/* Ensure inner table doesn’t stretch too wide */
-body.admin-toolbar .field-multiple-table table {
-  table-layout: auto !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-/* Prevent Database Reference Annotations table from pushing into sidebar */
+/* 🛠️ Specific fix for Database Reference Annotations field */
 body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table {
   display: block;
   overflow-x: auto;
   max-width: 100%;
 }
 
-/* Force table layout to fixed to constrain width */
 body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table table {
   table-layout: fixed !important;
   width: 100% !important;
@@ -119,26 +70,28 @@ body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-ta
   border-collapse: collapse;
 }
 
-/* Wrap text content in table cells */
 body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table td {
   word-break: break-word !important;
   overflow-wrap: break-word !important;
 }
 
-/* Ensure input and select fields wrap inside their cells */
-body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table input,
-body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table select {
+/* Clamp <select> width inside dbxref field without breaking responsiveness */
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table select.form-select,
+.chado-dbxref-field-wrapper select.form-select {
+  max-width: 260px !important;
   width: 100% !important;
-  max-width: 400px !important;
   box-sizing: border-box;
-}
-/* More bullet-proof: constrain all multi-value tables */
-body.admin-toolbar .field-multiple-table table {
-  table-layout: fixed !important;
+  text-overflow: ellipsis;
 }
 
-body.admin-toolbar .field-multiple-table td {
-  word-break: break-word !important;
+/* Ensure input fields inside problematic table wrap properly */
+body.admin-toolbar .field--name-field-db-reference-annotation .field-multiple-table input {
+  max-width: 100% !important;
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  box-sizing: border-box;
 }
+
 
 
